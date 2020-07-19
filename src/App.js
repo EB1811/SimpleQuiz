@@ -1,25 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+// Components imports
+import Nav from './Components/Layout/Nav';
+import Dashboard from './Components/Dashboard/Dashboard';
+import QuizPage from './Components/Quiz/QuizPage';
+import SignIn from './Components/Auth/SignIn';
+import SignUp from './Components/Auth/SignOut';
+import CreateQuiz from './Components/Quiz/CreateQuiz';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Nav/>
+        <Switch>
+          <Route exact path='/' component={Dashboard}/>
+          <Route path='/login' component={SignIn}/>
+          <Route path='/signUp' component={SignUp}/>
+          <Route path='/createquiz' component={CreateQuiz}/>
+          <Route path='/quiz/:id' component={QuizPage}/>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
