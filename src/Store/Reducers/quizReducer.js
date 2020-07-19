@@ -1,18 +1,18 @@
 const initState = {
-    quizzes: [
-        {id: '1', title: 'help me find peach', content: 'blah blah blah'},
-        {id: '2', title: 'collect all the stars', content: 'blah blah blah'},
-        {id: '3', title: 'egg hunt with yoshi', content: 'blah blah blah'}
-    ]
+    quizzes: []
 }
 
 const quizReducer = (state = initState, action) => {
     switch (action.type) {
         case 'CREATE_QUIZ':
-            //console.log("Success", action.quiz)
+            console.log("Success", action.quiz)
+            return state;
+        case 'CREATE_QUIZ_FAILED':
+            console.log("Error ", action.err)
+            return state
+        default:
+            return state;
     }
-
-    return state;
 }
 
 export default quizReducer;
