@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { createQuiz } from '../../Store/Actions/quizActions'
 
 class CreateQuiz extends Component {
 
@@ -14,7 +16,8 @@ class CreateQuiz extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        //console.log(this.state);
+        this.props.createQuiz(this.state)
     }
 
     render() {
@@ -34,9 +37,6 @@ class CreateQuiz extends Component {
                         <label htmlFor="question">Qustion</label>
                         <input type="text" id="question" onChange={this.handleChange}/>
                     </div>
-                    <div className="input-field">
-                        <button className="btn pink lighten-1">Add Question</button>
-                    </div>
 
                     <div className="input-field">
                         <button className="btn pink lighten-1">Create Quiz</button>
@@ -47,4 +47,11 @@ class CreateQuiz extends Component {
     }
 }
 
-export default CreateQuiz
+// Dispatch function. 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createQuiz: (quiz) => dispatch(createQuiz(quiz))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateQuiz)

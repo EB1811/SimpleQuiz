@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import QuizList from '../Quiz/QuizList';
 import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux'
 
 class Dashboard extends Component {
     render(){
@@ -22,9 +24,15 @@ class Dashboard extends Component {
 
 // Turns redux store into component props.
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        quizzes: state.quizzes.quizzes
+        quizzes: state.firestore.ordered.quizzes
     }
 } 
 
-export default connect(mapStateToProps)(Dashboard);
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'quizzes' }
+    ])
+)(Dashboard);

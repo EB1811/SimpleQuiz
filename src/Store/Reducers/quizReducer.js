@@ -7,6 +7,11 @@ const initState = {
 }
 
 const quizReducer = (state = initState, action) => {
+    switch (action.type) {
+        case 'CREATE_QUIZ':
+            //console.log("Success", action.quiz)
+    }
+
     return state;
 }
 

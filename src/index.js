@@ -3,18 +3,40 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
-import rootReducer from './Reducers/rootReducer';
-import { Provider } from 'react-redux';
 
 // Redux
-const reduxStore = createStore(rootReducer);
+import { createStore, applyMiddleware, compose } from 'redux';
+import rootReducer from './Store/Reducers/rootReducer';
+import { Provider } from 'react-redux';
+
+// Thunk
+import thunk from 'redux-thunk';
+
+// Firebase
+import fbConfig from './config/fbConfig';
+import { reduxFirestore, getFirestore, createFirestoreInstance } from 'redux-firestore';
+import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
+import firebase from 'firebase/app';
+
+const reduxStore = createStore(rootReducer,
+  compose(
+    applyMiddleware(thunk.withExtraArgument({getFirestore, getFirebase})),
+    reduxFirestore(firebase, fbConfig)
+  )
+);
+
+const rrfProps = {
+  firebase,
+  config: fbConfig,
+  dispatch: reduxStore.dispatch,
+  createFirestoreInstance
+};
 
 ReactDOM.render(
   <Provider store = {reduxStore}>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+        <App />
+    </ReactReduxFirebaseProvider>
   </Provider>,
   document.getElementById('root')
   
