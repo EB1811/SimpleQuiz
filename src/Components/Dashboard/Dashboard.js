@@ -24,15 +24,15 @@ class Dashboard extends Component {
 
 // Turns redux store into component props.
 const mapStateToProps = (state) => {
-    console.log(state);
+    //console.log(state);
     return {
-        quizzes: state.firestore.ordered.quizzes
+        quizzes: state.firestore.ordered.fireQuizzes
     }
 } 
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'quizzes' }
+        { collection: 'quizzes', storeAs: 'fireQuizzes' }
     ])
 )(Dashboard);
