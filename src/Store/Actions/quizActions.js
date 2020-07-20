@@ -3,10 +3,13 @@ export const createQuiz = (quiz) => {
         // Using thump to return function instead of standard object containing actionType.
         // Make async call to database.
         const firestore = getFirestore();
+        const profile = getState().firebase.profile;
+        const authorID = getState().firebase.auth.uid;
+
         firestore.collection('quizzes').add({
             ...quiz,
-            author: "eman",
-            authorID: 1,
+            author: profile.username,
+            authorID: authorID,
             dateCreated: new Date()
         }).then(() => {
             dispatch({type: 'CREATE_QUIZ', quiz: quiz});

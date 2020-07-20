@@ -42,6 +42,7 @@ class CreateQuiz extends Component {
 
         // Calls function in quizAction.
         this.props.createQuiz(newQuiz)
+        this.props.history.push('/')
     }
 
     render() {
