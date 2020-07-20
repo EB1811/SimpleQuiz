@@ -6,7 +6,7 @@ import Nav from './Components/Layout/Nav';
 import Dashboard from './Components/Dashboard/Dashboard';
 import QuizPage from './Components/Quiz/QuizPage';
 import SignIn from './Components/Auth/SignIn';
-import SignUp from './Components/Auth/SignOut';
+import SignUp from './Components/Auth/SignUp';
 import CreateQuiz from './Components/Quiz/CreateQuiz';
 
 function App() {

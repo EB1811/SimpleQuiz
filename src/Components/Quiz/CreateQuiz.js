@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createQuiz } from '../../Store/Actions/quizActions';
 import Question from './Question';
+import { Redirect } from 'react-router-dom';
 
 class CreateQuiz extends Component {
 
@@ -44,6 +45,12 @@ class CreateQuiz extends Component {
     }
 
     render() {
+        const { authStatus } = this.props;
+
+        if(authStatus.isLoaded) {
+        // Route guarding
+        if(!authStatus.uid) return <Redirect to='/login' />
+        
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
@@ -74,9 +81,18 @@ class CreateQuiz extends Component {
                 </form>
             </div>
         )
+        } else {
+            return null;
+        }
     }
 }
 
+const mapStateToProps = (state) => {
+    //console.log(state)
+    return {
+        authStatus: state.firebase.auth
+    }
+}
 // Dispatch function. 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -84,4 +100,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateQuiz)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateQuiz)
