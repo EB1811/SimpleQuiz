@@ -1,23 +1,80 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
-const QuizPage = (props) => {
-    const { quiz } = props
-    if(quiz) {
-        return (
-            <div>
-                title: {quiz.title}
-            </div>
-        )
-    } else {
-        return (
-            // Have to create quiz page yourself l0l
-            <div className="container center">
-                <p>Loading Quiz...</p>
-            </div>
-        )
+class QuizPage extends Component {
+
+    state = {
+        currentQuestionIndex: 0,
+        answer: ''
+    }
+
+    getNextQuestion = (quiz) => {
+        if(quiz.question.length > this.state.currentQuestionIndex) {
+            if(this.state.answer == quiz.question[this.state.currentQuestionIndex].answer) {
+                this.setState({ 
+                    currentQuestionIndex: this.state.currentQuestionIndex + 1,
+                    answer: ''
+                });
+            }
+        } else {
+        }
+    }
+    
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        //console.log(this.state);
+    }
+
+    render() {
+        const { quiz } = this.props;
+
+        if(quiz) {
+            return (
+                <div className="container center">
+                    <form onSubmit={this.handleSubmit} className="white">
+                        <div className="row">
+                            <h4 htmlFor="title">{quiz.title}</h4>
+                        </div>
+
+                        <div className="row">
+                            <div className="row">
+                                <h5 className="left" htmlFor="question">
+                                    { quiz.question.length > this.state.currentQuestionIndex ? quiz.question[this.state.currentQuestionIndex].question
+                                    : 'End of quiz' }
+                                </h5>
+                            </div>
+                            <div className="row input-field">
+                                <label htmlFor="answer">Answer</label>
+                                <input type="text" id="answer" onChange={this.handleChange}/>
+                            </div>
+                            <div className="row">
+                                <div className="left input-field">
+                                    <button type="button" onClick={() => this.getNextQuestion(quiz)} className="btn pink lighten-1">Submit Answer</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="input-field">
+                            <button className="btn pink lighten-1">Finish Quiz</button>
+                        </div>
+                    </form>
+                </div>
+            )
+        } else {
+            return (
+                // Have to create quiz page yourself l0l
+                <div className="container center">
+                    <p>Loading Quiz...</p>
+                </div>
+            )
+        }
     }
 }
 
