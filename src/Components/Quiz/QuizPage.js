@@ -7,18 +7,31 @@ class QuizPage extends Component {
 
     state = {
         currentQuestionIndex: 0,
-        answer: ''
+        answer: '',
+        correctAnswer: true
     }
 
     getNextQuestion = (quiz) => {
         if(quiz.question.length > this.state.currentQuestionIndex) {
-            if(this.state.answer == quiz.question[this.state.currentQuestionIndex].answer) {
+            if(this.state.answer === quiz.question[this.state.currentQuestionIndex].answer) {
                 this.setState({ 
                     currentQuestionIndex: this.state.currentQuestionIndex + 1,
                     answer: ''
                 });
             }
-        } else {
+            else {
+                this.setState({ 
+                    correctAnswer: false
+                });
+                // Waits 2 seconds.
+                setTimeout(() => {
+                    this.setState({ 
+                        currentQuestionIndex: this.state.currentQuestionIndex + 1,
+                        correctAnswer: true,
+                        answer: ''
+                    });
+                }, 2000);
+            }
         }
     }
     
@@ -29,7 +42,8 @@ class QuizPage extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        //console.log(this.state);
+        this.getNextQuestion(this.props.quiz);
+        //console.log(this.props.quiz.question);
     }
 
     render() {
@@ -41,8 +55,8 @@ class QuizPage extends Component {
                     <form onSubmit={this.handleSubmit} className="white">
                         <div className="row">
                             <h4 htmlFor="title">{quiz.title}</h4>
+                            <h6 className="grey-text">{quiz.question.length} Questions</h6>
                         </div>
-
                         <div className="row">
                             <div className="row">
                                 <h5 className="left" htmlFor="question">
@@ -56,13 +70,12 @@ class QuizPage extends Component {
                             </div>
                             <div className="row">
                                 <div className="left input-field">
-                                    <button type="button" onClick={() => this.getNextQuestion(quiz)} className="btn pink lighten-1">Submit Answer</button>
+                                    <button className="btn pink lighten-1">Submit Answer</button>
                                 </div>
                             </div>
-                        </div>
-
-                        <div className="input-field">
-                            <button className="btn pink lighten-1">Finish Quiz</button>
+                            <div className="red-text row left">
+                                { this.state.correctAnswer === false ? <h5>Incorrect</h5> : null}
+                            </div>
                         </div>
                     </form>
                 </div>
