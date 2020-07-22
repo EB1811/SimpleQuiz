@@ -12,6 +12,19 @@ code {
     monospace;
 }
 
+.valign-wrapper {
+  min-height: calc(100vh - 64px);
+}
+
+.btn-large {
+  height: auto;
+  width: auto;
+  line-height: 35px;
+  padding: 25px;
+  font-size: 35px;
+  white-space: nowrap;
+}
+
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=email]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
