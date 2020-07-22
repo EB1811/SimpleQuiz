@@ -18,10 +18,6 @@ import { reduxFirestore, getFirestore, createFirestoreInstance } from 'redux-fir
 import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
 import firebase from 'firebase/app';
 
-//for render on auth ready
-import { useSelector  } from 'react-redux'
-import { isLoaded  } from 'react-redux-firebase';
-
 const reduxStore = createStore(rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({getFirestore, getFirebase})),
@@ -38,6 +34,7 @@ const profileSpecificProps = {
 const rrfProps = {
   firebase,
   config: fbConfig,
+  // eslint-disable-next-line
   config: profileSpecificProps,
   dispatch: reduxStore.dispatch,
   createFirestoreInstance
