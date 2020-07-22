@@ -9,6 +9,7 @@ class QuizPage extends Component {
     state = {
         currentQuestionIndex: 0,
         answer: '',
+        anwerSubmitted: false,
         correctAnswer: true,
         correctSubmit: false,
         finishQuiz: false,
@@ -20,7 +21,8 @@ class QuizPage extends Component {
             if(this.state.answer === quiz.question[this.state.currentQuestionIndex].answer) {
                 this.setState({ 
                     correctSubmit: true,
-                    correctAnswers: this.state.correctAnswers + 1
+                    correctAnswers: this.state.correctAnswers + 1,
+                    anwerSubmitted: true
                 });
 
                 // Waits 2 seconds.
@@ -28,20 +30,23 @@ class QuizPage extends Component {
                     this.setState({ 
                         currentQuestionIndex: this.state.currentQuestionIndex + 1,
                         answer: '',
-                        correctSubmit: false
+                        correctSubmit: false,
+                        anwerSubmitted: false
                     });
                 }, 1000);
             }
             else {
                 this.setState({ 
-                    correctAnswer: false
+                    correctAnswer: false,
+                    anwerSubmitted: true
                 });
                 // Waits 2 seconds.
                 setTimeout(() => {
                     this.setState({ 
                         currentQuestionIndex: this.state.currentQuestionIndex + 1,
                         correctAnswer: true,
-                        answer: ''
+                        answer: '',
+                        anwerSubmitted: false
                     });
                 }, 1000);
             }
@@ -61,7 +66,9 @@ class QuizPage extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        this.getNextQuestion(this.props.quiz);
+        if(this.state.anwerSubmitted !== true) {
+            this.getNextQuestion(this.props.quiz);
+        }
         //console.log(this.props.quiz.question);
     }
 
