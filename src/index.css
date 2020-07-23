@@ -42,6 +42,18 @@ code {
   margin-top: 25px;
 }
 
+.quizTitle {
+  color: #1E2425;
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 25px;
+}
+.infoText {
+  font-size: 13px;
+  font-style: italic;
+  white-space: nowrap;
+}
+
 .title {
   top: 35%;
 	transform: translateY(-65%);
@@ -65,6 +77,9 @@ code {
     top: 30%;
 	  transform: translateY(-70%);
   }
+  .infoText {
+    font-size: 12.5px;
+  }
 }
 @media only screen and (max-width: 1440px) {
   .title {
@@ -76,8 +91,14 @@ code {
     padding: 20px;
     font-size: 30px;
   }
+  .quizTitle {
+    font-size: 17.5px;
+  }
+  .infoText {
+    font-size: 11px;
+  }
 }
-@media only screen and (max-width: 750x) {
+@media only screen and (max-width: 750px) {
   .title {
     top: 25%;
 	  transform: translateY(-75%);
@@ -86,6 +107,12 @@ code {
     line-height: 30px;
     padding: 20px;
     font-size: 30px;
+  }
+  .quizTitle {
+    font-size: 15px;
+  }
+  .infoText {
+    font-size: 10px;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -101,6 +128,12 @@ code {
   .backButton {
     margin-left: 5px;
     margin-top: 5px;
+  }
+  .quizTitle {
+    font-size: 25px;
+  }
+  .infoText {
+    font-size: 12.5px;
   }
 }
 

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import QuizList from '../Quiz/QuizList';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux'
+import { compose } from 'redux';
+import Nav from '../Layout/Nav';
+import { NavLink } from 'react-router-dom';
 
 class Dashboard extends Component {
     render(){
@@ -12,11 +14,14 @@ class Dashboard extends Component {
 
         return (
             <div>
-                <div className="backButton">
-                    <a class="btn-floating btn-large waves-effect hoverable waves-light deep-purple">
-                        <i class="material-icons">arrow_back</i>
-                    </a>
-                </div>
+                <Nav/>
+                <NavLink to='/'>
+                    <div className="backButton">
+                        <a class="btn-floating btn-large waves-effect hoverable waves-light deep-purple">
+                            <i class="material-icons">arrow_back</i>
+                        </a>
+                    </div>
+                </NavLink>
                 <div className="dashboard container">
                     <div className="row">
                         <div className="col s12 ">

@@ -8,12 +8,12 @@ const SignedInLinks = (props) => {
     const userLetter = props.profile.username ? props.profile.username.charAt(0) : ''
     return (
         <ul className="right">
-            <li><a href='/' onClick={props.signOut}>Log Out</a></li>
             <li>
-                <NavLink to='/' className='btn btn-floating pink lighten-1'>
+                <NavLink to='/' className='btn btn-floating deep-purple lighten-1'>
                     { userLetter }
                 </NavLink>
             </li>
+            <li><a href='/' onClick={props.signOut}>Log Out</a></li>
         </ul>
     )
 }
