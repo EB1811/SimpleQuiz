@@ -11,10 +11,17 @@ class Dashboard extends Component {
         const { quizzes } = this.props;
 
         return (
-            <div className="dashboard container">
-                <div className="row">
-                    <div className="col s12 ">
-                        <QuizList quizzes={quizzes}/>
+            <div>
+                <div className="backButton">
+                    <a class="btn-floating btn-large waves-effect hoverable waves-light deep-purple">
+                        <i class="material-icons">arrow_back</i>
+                    </a>
+                </div>
+                <div className="dashboard container">
+                    <div className="row">
+                        <div className="col s12 ">
+                            <QuizList quizzes={quizzes}/>
+                        </div>
                     </div>
                 </div>
             </div>

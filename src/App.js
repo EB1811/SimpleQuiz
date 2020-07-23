@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 // Components imports
-import Nav from './Components/Layout/Nav';
 import Dashboard from './Components/Dashboard/Dashboard';
 import QuizPage from './Components/Quiz/QuizPage';
 import SignIn from './Components/Auth/SignIn';
@@ -14,7 +13,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App" style={{height:"100%"}}>
-        <Nav/>
         <Switch>
           <Route exact path='/' component={Base}/>
           <Route exact path='/Dashboard' component={Dashboard}/>
