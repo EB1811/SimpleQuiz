@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import ResultsPage from './ResultsPage';
+import Nav from '../Layout/Nav';
+import { NavLink } from 'react-router-dom';
 
 class QuizPage extends Component {
 
@@ -66,8 +68,13 @@ class QuizPage extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        if(this.state.anwerSubmitted !== true) {
-            this.getNextQuestion(this.props.quiz);
+
+        if(this.props.quiz.question.length > this.state.currentQuestionIndex) {
+            if(this.state.anwerSubmitted !== true) {
+                this.getNextQuestion(this.props.quiz);
+            }
+        } else {
+            this.submitQuiz();
         }
         //console.log(this.props.quiz.question);
     }
@@ -78,35 +85,52 @@ class QuizPage extends Component {
         if(quiz) {
             if(this.state.finishQuiz === false) {
                 return (
-                    <div className="container center">
-                        <form onSubmit={this.handleSubmit} className="white">
-                            <div className="row">
-                                <h4 htmlFor="title">{quiz.title}</h4>
-                                <h6 className="grey-text">{quiz.question.length} Questions</h6>
+                    <div>
+                        <Nav/>
+                        <NavLink to='/Dashboard'>
+                            <div className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
+                                { /* eslint-disable-next-line */ }
+                                <i className="material-icons">arrow_back</i>
                             </div>
-                            <div className="row">
-                                <div className="row">
-                                    <h5 className="left" htmlFor="question">
-                                        { quiz.question.length > this.state.currentQuestionIndex ? quiz.question[this.state.currentQuestionIndex].question
-                                        : 'End of quiz' }
-                                    </h5>
-                                </div>
-                                <div className="row input-field">
-                                    <label htmlFor="answer">Answer</label>
-                                    <input type="text" id="answer" onChange={this.handleChange} value={this.state.answer}/>
-                                </div>
-                                <div className="row">
-                                    <div className="left input-field">
-                                    { quiz.question.length > this.state.currentQuestionIndex ? <button className="btn pink lighten-1">Submit Answer</button>
-                                        : null }
+                        </NavLink>
+
+                        <h3 className="title quizTitleSize">
+                            { quiz.question.length > this.state.currentQuestionIndex 
+                            ? quiz.question[this.state.currentQuestionIndex].question
+                            : 'End of quiz' }
+                        </h3>
+
+                        <div className="valign-wrapper">
+                            <div className="container">
+                                <form onSubmit={this.handleSubmit} className="">
+                                    <div className="row">
+                                        <div className="col s6 offset-s3">
+                                            { quiz.question.length > this.state.currentQuestionIndex 
+                                            ?
+                                            <div className="input-field">
+                                                <label htmlFor="answer">Answer</label>
+                                                <input type="text" id="answer" onChange={this.handleChange} value={this.state.answer}/>
+                                            </div>
+                                            : null }
+                                        </div>
+                                        <div className="col s3">
+                                            { this.state.correctAnswer === false ? <i className="material-icons medium red">clear</i> : null } 
+                                            { this.state.correctSubmit === true ? <i className="material-icons medium green">check</i> : null }
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="black-text row left">
-                                    <h5>{"> "} { this.state.correctAnswer === false ? <span className="red-text">Incorrect</span> : null} { this.state.correctSubmit === true ? <span className="green-text">Correct</span> : null } </h5>
-                                </div>
+
+                                    <div className="row">
+                                        <div className="input-field center">
+                                            { /* If there are questions left: */}
+                                            { quiz.question.length > this.state.currentQuestionIndex 
+                                            ? <button className="btn-large hoverable deep-purple">Submit Answer</button>
+                                            : <button className="btn-large hoverable deep-purple"> Finish Quiz </button> }
+                                            
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <button type="button" className="btn pink lighten-1" onClick={this.submitQuiz}>Finish Quiz</button>
-                        </form>
+                        </div>
                     </div>
                 )
             } else {

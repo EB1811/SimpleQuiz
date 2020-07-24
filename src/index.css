@@ -100,6 +100,14 @@ code {
   padding-bottom: 5px;
 }
 
+.card .card-title {
+  font-size: 50px;
+  white-space: nowrap;
+  font-weight: bold;
+  color: #1E2425;
+  text-align: center;
+}
+
 .core {
   position: relative;
 	height: 100%;
@@ -132,6 +140,12 @@ code {
   color: #673ab7;
   font-weight: bold;
 }
+.quizTitleSize {
+  width: 80%;
+  left: 10%;
+  font-size: 50px;
+  white-space: normal;
+}
 
 /* BREAKPOINTS DONT CHANGE */
 @media only screen and (max-width: 2120px) {
@@ -155,11 +169,17 @@ code {
     margin-top: 65px;
     margin-bottom: 140px;
   }
+  .quizTitleSize {
+    font-size: 45px;
+  }
 }
 @media only screen and (max-width: 1440px) {
   .title {
     top: 27.5%;
 	  transform: translateY(-72.5%);
+  }
+  .quizTitleSize {
+    font-size: 30px;
   }
   .btn-large {
     line-height: 30px;
@@ -204,11 +224,19 @@ code {
   .colTitle {
     font-size: 17.5px;
   }
+  .card .card-title {
+    font-size: 35px;
+  }
 }
 @media only screen and (max-width: 750px) {
   .title {
     top: 25%;
 	  transform: translateY(-75%);
+  }
+  .quizTitleSize {
+    top: 30%;
+	  transform: translateY(-70%);
+    font-size: 25px;
   }
   .btn-large {
     line-height: 30px;
@@ -252,11 +280,19 @@ code {
     padding-top: 2px;
     padding-bottom: 2px;
   }
+  .card .card-title {
+    font-size: 27.5px;
+  }
 }
 @media only screen and (max-width: 600px) {
   .title {
     top: 25%;
 	  transform: translateY(-75%);
+  }
+  .quizTitleSize {
+    top: 30%;
+	  transform: translateY(-70%);
+    font-size: 20px;
   }
   .btn-large {
     line-height: 22.5px;
@@ -277,6 +313,9 @@ code {
   }
   .infoText {
     font-size: 12.5px;
+  }
+  .card .card-title {
+    font-size: 22.5px;
   }
 }
 

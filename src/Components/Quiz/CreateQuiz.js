@@ -24,7 +24,11 @@ class CreateQuiz extends Component {
                 question: this.state.currentQuestion,
                 answer: this.state.currentAnswer
             }
-
+            
+            this.setState({
+                currentQuestion: '',
+                currentAnswer: '',
+            });
             this.setState({ questions: [...this.state.questions, newQuestion]});
             //console.log(this.state)
         }
@@ -123,13 +127,13 @@ class CreateQuiz extends Component {
                                             <div className="col s5 offset-s1">
                                                 <div className="input-field">
                                                     <label htmlFor="question">Qustion</label>
-                                                    <input type="text" id="currentQuestion" onChange={this.handleChange}/>
+                                                    <input type="text" id="currentQuestion" onChange={this.handleChange} value={this.state.currentQuestion}/>
                                                 </div>
                                             </div>
                                             <div className="col s5">
                                                 <div className="input-field">
                                                     <label htmlFor="answer">Answer</label>
-                                                    <input type="text" id="currentAnswer" onChange={this.handleChange}/>
+                                                    <input type="text" id="currentAnswer" onChange={this.handleChange} value={this.state.currentAnswer}/>
                                                 </div>
                                             </div>
                                             <div className="col s6 offset-s3 center">
