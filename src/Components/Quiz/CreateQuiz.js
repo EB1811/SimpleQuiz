@@ -67,10 +67,9 @@ class CreateQuiz extends Component {
                     <div>
                         <Nav/>
                         <NavLink to='/'>
-                            <div className="backButton">
-                                <a class="btn-floating btn-large waves-effect hoverable waves-light deep-purple">
-                                    <i class="material-icons">arrow_back</i>
-                                </a>
+                            <div className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
+                                { /* eslint-disable-next-line */ }
+                                <i className="material-icons">arrow_back</i>
                             </div>
                         </NavLink>
                         <div className="valign-wrapper">
@@ -101,10 +100,9 @@ class CreateQuiz extends Component {
                     <div>
                         <Nav/>
                         <NavLink to='/'>
-                            <div className="backButton">
-                                <a class="btn-floating btn-large waves-effect hoverable waves-light deep-purple">
-                                    <i class="material-icons">arrow_back</i>
-                                </a>
+                            <div className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
+                                { /* eslint-disable-next-line */ }
+                                <i className="material-icons">arrow_back</i>
                             </div>
                         </NavLink>
                         <div className="valign-wrapper">

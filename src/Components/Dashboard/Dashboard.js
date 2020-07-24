@@ -15,12 +15,9 @@ class Dashboard extends Component {
         return (
             <div>
                 <Nav/>
-                <NavLink to='/'>
-                    <div className="backButton">
-                        <a class="btn-floating btn-large waves-effect hoverable waves-light deep-purple">
-                            <i class="material-icons">arrow_back</i>
-                        </a>
-                    </div>
+                <NavLink to='/' className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
+                    { /* eslint-disable-next-line */ }
+                    <i className="material-icons">arrow_back</i>
                 </NavLink>
                 <div className="dashboard container">
                     <div className="row">
