@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { signIn } from '../../Store/Actions/authActions'
 import { Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class SignIn extends Component {
 
@@ -28,32 +29,49 @@ class SignIn extends Component {
         if(authStatus.uid) return <Redirect to='/' />
 
         return (
-            <div className="container">
-                <form onSubmit={this.handleSubmit} className="white">
-                    <div className="row center">
-                        <h5 className="grey-text text-darken-3">Sign In</h5>
+            <div>
+                <NavLink to='/'>
+                    <div className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
+                        { /* eslint-disable-next-line */ }
+                        <i className="material-icons">arrow_back</i>
                     </div>
+                </NavLink>
+                <div className="valign-wrapper">
+                    <div className="container">
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="row">
+                                <div className="col s6 offset-s3">
+                                    <div className="input-field">
+                                        <label htmlFor="email">Email</label>
+                                        <input required type="email" id="email" onChange={this.handleChange}/>
+                                    </div>
+                                </div>
+                                <div className="col s6 offset-s3">
+                                    <div className="input-field">
+                                        <label htmlFor="password">Password</label>
+                                        <input required type="password" id="password" onChange={this.handleChange}/>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div className="input-field">
-                        <label htmlFor="email">Email</label>
-                        <input required type="email" id="email" onChange={this.handleChange}/>
+                            <div className="row">
+                                <div className="col s2 offset-s4">
+                                    <button className="btn-large hoverable deep-purple">Log In</button>
+                                </div>
+                                <div className="col s2">
+                                    <NavLink to='/signup' className="btn-large hoverable deep-purple">Sign Up</NavLink>
+                                </div>
+                            </div>
+                            <div className="red-text row">
+                                <div className="col s12 center">
+                                    { authError ? <h5>{authError}</h5> : <h5>&nbsp;</h5>}
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    
-                    <div className="input-field">
-                        <label htmlFor="password">Password</label>
-                        <input required type="password" id="password" onChange={this.handleChange}/>
-                    </div>
-                    
-                    <div className="input-field center">
-                        <button className="btn pink lighten-1">Log In</button>
-                        <div className="red-text row">
-                            { authError ? <h5>{authError}</h5> : null}
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         )
-        
         } else {
             return null;
         }
