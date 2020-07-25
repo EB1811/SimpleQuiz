@@ -20,7 +20,8 @@ class CreateQuiz extends Component {
     addQuestion = () => {
         if(this.state.currentQuestion && this.state.currentAnswer) {
             const newQuestion = {
-                id: this.state.questions.length + 1,
+                id: this.state.questions.length * 1 * this.state.currentQuestion.length * this.state.currentAnswer.length 
+                + (Math.floor(Math.random() * Math.floor((this.state.currentQuestion.length * 25) * (this.state.currentAnswer.length * 25) * 50))),
                 question: this.state.currentQuestion,
                 answer: this.state.currentAnswer
             }
@@ -30,8 +31,15 @@ class CreateQuiz extends Component {
                 currentAnswer: '',
             });
             this.setState({ questions: [...this.state.questions, newQuestion]});
-            //console.log(this.state)
+            console.log(newQuestion.id)
         }
+    }
+
+    delQuestion = (question) => {
+        var newQuestions = this.state.questions.filter(function(el) { return el.id !== question.id; });
+        //console.log(newQuestions);
+        this.setState({ questions: newQuestions});
+        //console.log(this.state.questions);
     }
 
     nextStage = () => {
@@ -120,7 +128,7 @@ class CreateQuiz extends Component {
                                     <div className="row areaMargin">
                                         <div className="row noBottomMargin">
                                             <div className="col s6 offset-s3">
-                                                <Question questions={this.state.questions}/>
+                                                <Question questions={this.state.questions} delQuestion={this.delQuestion}/>
                                             </div>
                                         </div>
                                         <div className="row noBottomMargin">

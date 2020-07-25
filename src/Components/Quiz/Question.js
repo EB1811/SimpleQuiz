@@ -1,14 +1,18 @@
 import React from 'react';
 
-const Question = ({questions}) => {
+const Question = (props) => {
     return (
         <ul className="collection with-header">
-            { questions && questions.map(question =>{
+            { props.questions && props.questions.map(question =>{
+                //console.log(question);
                 return (
-                    <div className="collection-item deep-purple colText" key={question.id}>
-                        Question: {question.question} <br/>
-                        Answer: {question.answer}
-                    </div>
+                    <li className="collection-item deep-purple colText" key={question.id}>
+                        <div>
+                            Question: {question.question} <br/>
+                            Answer: {question.answer}
+                        </div>
+                        <span className="colDel" onClick={() => props.delQuestion(question)}>x</span>
+                    </li>
                 )
             })}
         </ul>
