@@ -1,5 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
+
+// Framer Motion
+import { AnimatePresence } from 'framer-motion';
 
 // Components imports
 import Dashboard from './Components/Dashboard/Dashboard';
@@ -10,10 +13,13 @@ import CreateQuiz from './Components/Quiz/CreateQuiz';
 import Base from './Components/base/Base';
 
 function App() {
+  // Contains info about route.
+  const location = useLocation();
+
   return (
-    <BrowserRouter>
-      <div className="App" style={{height:"100%"}}>
-        <Switch>
+    <div className="App" style={{height:"100%"}}>
+      <AnimatePresence>
+        <Switch location={location} key={location.key}>
           <Route exact path='/' component={Base}/>
           <Route exact path='/Dashboard' component={Dashboard}/>
           <Route path='/login' component={SignIn}/>
@@ -21,8 +27,8 @@ function App() {
           <Route path='/createquiz' component={CreateQuiz}/>
           <Route path='/quiz/:id' component={QuizPage}/>
         </Switch>
-      </div>
-    </BrowserRouter>
+      </AnimatePresence>
+    </div>
   );
 }
 

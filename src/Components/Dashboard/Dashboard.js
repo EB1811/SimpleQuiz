@@ -5,6 +5,17 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Nav from '../Layout/Nav';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+// Motion variant.
+const animateVariants = {
+    start: { 
+        x: '100vw' 
+    },
+    finish: {
+        x: 0
+    }
+}
 
 class Dashboard extends Component {
     render(){
@@ -13,7 +24,8 @@ class Dashboard extends Component {
         const { quizzes } = this.props;
 
         return (
-            <div>
+            <motion.div
+                variants={animateVariants} initial="start" animate="finish">
                 <Nav/>
                 <NavLink to='/' className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
                     { /* eslint-disable-next-line */ }
@@ -26,7 +38,7 @@ class Dashboard extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         )
     }
 }
