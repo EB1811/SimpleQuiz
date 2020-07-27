@@ -18,8 +18,8 @@ function App() {
 
   return (
     <div className="App" style={{height:"100%"}}>
-      <AnimatePresence>
-        <Switch location={location} key={location.key}>
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.pathname}>
           <Route exact path='/' component={Base}/>
           <Route exact path='/Dashboard' component={Dashboard}/>
           <Route path='/login' component={SignIn}/>

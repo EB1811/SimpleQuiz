@@ -4,20 +4,59 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Nav from '../Layout/Nav';
-import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 // Motion variant.
 const animateVariants = {
-    start: { 
-        x: '100vw' 
+    enter: (direction) => {
+      return {
+        x: direction > 0 ? 1000 : -1000,
+        opacity: 0
+      };
     },
-    finish: {
-        x: 0
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        mass: 0.4,
+        stiffness: 1000, 
+        damping: 100,
+        when: "beforeChildren",
+        }
+    },
+    exit: (direction) => {
+      return {
+        x: direction < 0 ? '100vw' : '-100vw',
+        opacity: 0
+      };
     }
-}
+};
+const animateVariants2 = {
+    enter: {
+        opacity: 0,
+    },
+    center: {
+      opacity: 1,
+      transition: {
+          opacity: { duration: 0.25 }
+    }
+    },
+};
 
 class Dashboard extends Component {
+    state = {
+        direction: 1
+    }    
+
+    back = (value) => {
+        this.setState({ 
+            direction: value
+        });
+    
+        this.props.history.push('/');
+    }
+
     render(){
         //console.log(this.props);
 
@@ -25,19 +64,22 @@ class Dashboard extends Component {
 
         return (
             <motion.div
-                variants={animateVariants} initial="start" animate="finish">
+                variants={animateVariants} custom={this.state.direction} initial="enter" animate="center" exit="exit"
+            >
                 <Nav/>
-                <NavLink to='/' className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
-                    { /* eslint-disable-next-line */ }
+                { /* eslint-disable-next-line */ }
+                <button onClick={() => this.back(-1)} className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
                     <i className="material-icons">arrow_back</i>
-                </NavLink>
-                <div className="dashboard container">
+                </button>
+                <motion.div className="dashboard container"
+                    variants={animateVariants2}
+                >
                     <div className="row">
                         <div className="col s12 ">
-                            <QuizList quizzes={quizzes}/>
+                            <QuizList anim={this.back} quizzes={quizzes}/>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </motion.div>
         )
     }

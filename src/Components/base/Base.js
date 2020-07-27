@@ -3,18 +3,30 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 // Motion variant.
+// Parent.
 const animateVariants = {
     start: { 
         opacity: 0,
     },
     finish: {
         opacity: 1,
+        transition: {
+            opacity: { duration: 0.5 },
+            when: "beforeChildren",
+            staggerChildren: 0.3
+        }
     },
     exit: {
-        x: '-200vh'
+        x: -1000,
+        opacity: 0,
+        transition: {
+            type: "spring",
+            stiffness: 1000, 
+            damping: 55
+        }
     }
 }
-
+// Children.
 const animateVariants2 = {
     start: { 
         x: '100vw',
@@ -22,11 +34,12 @@ const animateVariants2 = {
     finish: {
         x: 0,
         transition: {
-            delay: 0.5
+            type: "spring",
+            stiffness: 1000, 
+            damping: 55
         }
     },
 }
-
 const animateVariants3 = {
     start: { 
         x: '100vw',
@@ -34,7 +47,9 @@ const animateVariants3 = {
     finish: {
         x: 0,
         transition: {
-            delay: 1
+            type: "spring",
+            stiffness: 1000, 
+            damping: 55
         }
     },
 }
@@ -42,21 +57,21 @@ const animateVariants3 = {
 const Base = () => {
     return (
         <motion.div className="core"
-            variants={animateVariants} initial="" animate="" exit="exit">
-            <motion.h1 className="title"
-            variants={animateVariants} initial="start" animate="finish">
+            variants={animateVariants} initial="start" animate="finish" exit="exit"
+        >
+            <h1 className="title">
                 Simple Quizzes
-            </motion.h1>
+            </h1>
         
             <div className="container valign-wrapper">
                 <div className="row">
                         <motion.div className="col s6"
-                            variants={animateVariants2} initial="start" animate="finish"
+                            variants={animateVariants2}
                         >
                             <Link to='/Dashboard' className="btn-large hoverable deep-purple">View Quizzes</Link>
                         </motion.div>
                         <motion.div className="col s6"
-                            variants={animateVariants3} initial="start" animate="finish"
+                            variants={animateVariants3}
                         >
                             <Link to='/createquiz' className="btn-large hoverable deep-purple">Create Quiz</Link>
                         </motion.div>
