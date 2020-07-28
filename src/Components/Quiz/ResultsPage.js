@@ -1,18 +1,38 @@
 import React from 'react';
 import Nav from '../Layout/Nav';
-import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-const ResultsPage = ({correctNum, questionsNum}) => {
+// Motion variant.
+// Parent.
+const animateVariants = {
+    start: { 
+        opacity: 0,
+        x: 1000
+    },
+    finish: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            type: "spring",
+            mass: 0.4,
+            stiffness: 1000, 
+            damping: 100,
+            when: "beforeChildren",
+        }
+    },
+}
+
+
+const ResultsPage = ({correctNum, questionsNum, back}) => {
     return (
         <div>
             <Nav/>
-            <NavLink to='/Dashboard'>
-                <div className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
-                    { /* eslint-disable-next-line */ }
-                    <i className="material-icons">arrow_back</i>
-                </div>
-            </NavLink>
-            <div className="valign-wrapper">
+            <button onClick={() => back(-1)} className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
+                <i className="material-icons">arrow_back</i>
+            </button>
+            <motion.div className="valign-wrapper"
+                variants={animateVariants} initial="start" animate="finish"
+            >
                 <div className="container">
                     <div>
                         <div className="row">
@@ -26,7 +46,7 @@ const ResultsPage = ({correctNum, questionsNum}) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }

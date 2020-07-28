@@ -4,7 +4,51 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import ResultsPage from './ResultsPage';
 import Nav from '../Layout/Nav';
-import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+// Motion variant.
+// Parent.
+const animateVariants = {
+    start: { 
+        opacity: 0,
+        x: 1000
+    },
+    finish: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            type: "spring",
+            mass: 0.4,
+            stiffness: 1000, 
+            damping: 100,
+            when: "beforeChildren",
+        }
+    },
+    exit: {
+        x: 1000,
+        opacity: 0,
+        transition: {
+            type: "spring",
+            stiffness: 1000, 
+            damping: 55
+        }
+    }
+}
+const animateVariants3 = {
+    start: { 
+    },
+    finish: {
+    },
+    exit: {
+        x: 1000,
+        opacity: 0,
+        transition: {
+            type: "spring",
+            stiffness: 1000, 
+            damping: 55
+        }
+    }
+}
 
 class QuizPage extends Component {
 
@@ -79,20 +123,24 @@ class QuizPage extends Component {
         //console.log(this.props.quiz.question);
     }
 
+    // Framer Motion start animation for dashboard. 
+    back = (value) => {
+        this.props.history.push('/dashboard', { direction: value});
+    }
+
     render() {
         const { quiz } = this.props;
 
         if(quiz) {
             if(this.state.finishQuiz === false) {
                 return (
-                    <div>
+                    <motion.div
+                        variants={animateVariants} initial="start" animate="finish" exit="exit"
+                    >
                         <Nav/>
-                        <NavLink to='/Dashboard'>
-                            <div className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
-                                { /* eslint-disable-next-line */ }
-                                <i className="material-icons">arrow_back</i>
-                            </div>
-                        </NavLink>
+                        <button onClick={() => this.back(-1)} className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
+                            <i className="material-icons">arrow_back</i>
+                        </button>
 
                         <h3 className="title quizTitleSize">
                             { quiz.question.length > this.state.currentQuestionIndex 
@@ -131,19 +179,20 @@ class QuizPage extends Component {
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 )
             } else {
                 return (
-                    <ResultsPage correctNum={this.state.correctAnswers} questionsNum={quiz.question.length}/>
+                    <motion.div
+                        variants={animateVariants3} initial="start" animate="finish" exit="exit"
+                    >
+                        <ResultsPage back={this.back} correctNum={this.state.correctAnswers} questionsNum={quiz.question.length}/>
+                    </motion.div>
                 )
             }
         } else {
             return (
-                // Have to create quiz page yourself l0l
-                <div className="container center">
-                    <p>Loading Quiz...</p>
-                </div>
+                null
             )
         }
     }

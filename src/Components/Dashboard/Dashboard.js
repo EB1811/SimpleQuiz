@@ -45,8 +45,9 @@ const animateVariants2 = {
 };
 
 class Dashboard extends Component {
+    // 1 = right to left.
     state = {
-        direction: 1
+        direction: this.props.location.state ? this.props.location.state : 1
     }    
 
     back = (value) => {

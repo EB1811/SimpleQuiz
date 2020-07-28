@@ -5,6 +5,52 @@ import Question from './Question';
 import { Redirect } from 'react-router-dom';
 import Nav from '../Layout/Nav';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+// Motion variant.
+// Parent.
+const animateVariants = {
+    start: { 
+        opacity: 0,
+        x: 1000
+    },
+    finish: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            type: "spring",
+            mass: 0.4,
+            stiffness: 1000, 
+            damping: 100,
+            when: "beforeChildren",
+        }
+    },
+    exit: {
+        x: 1000,
+        opacity: 0,
+        transition: {
+            type: "spring",
+            stiffness: 1000, 
+            damping: 55
+        }
+    }
+}
+const animateVariants2 = {
+    start: {
+        opacity: 0,
+        x: 1000
+    },
+    finish: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            type: "spring",
+            mass: 0.4,
+            stiffness: 1000, 
+            damping: 100,
+        }
+    },
+};
 
 class CreateQuiz extends Component {
 
@@ -76,7 +122,9 @@ class CreateQuiz extends Component {
         if(!authStatus.uid) return <Redirect to='/login' />
             if(this.state.currentStage === 0) {
                 return (
-                    <div>
+                    <motion.div 
+                        variants={animateVariants} initial="start" animate="finish" exit="exit"
+                    >
                         <Nav/>
                         <NavLink to='/'>
                             <div className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
@@ -105,11 +153,13 @@ class CreateQuiz extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 )
             } else if(this.state.currentStage === 1) {
                 return (
-                    <div>
+                    <motion.div 
+                        variants={animateVariants} initial="start" animate="finish" exit="exit"
+                    >
                         <Nav/>
                         <NavLink to='/'>
                             <div className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
@@ -117,7 +167,9 @@ class CreateQuiz extends Component {
                                 <i className="material-icons">arrow_back</i>
                             </div>
                         </NavLink>
-                        <div className="valign-wrapper">
+                        <motion.div className="valign-wrapper"
+                            variants={animateVariants2} initial="start" animate="finish"
+                        >
                             <div className="container">
                                 <form onSubmit={this.handleSubmit} className="">
                                     <div className="row">
@@ -157,8 +209,8 @@ class CreateQuiz extends Component {
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 )
             }
         } else {
