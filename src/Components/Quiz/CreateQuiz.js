@@ -119,7 +119,7 @@ class CreateQuiz extends Component {
 
         if(authStatus.isLoaded) {
         // Route guarding
-        if(!authStatus.uid) return <Redirect to='/login' />
+        if(!authStatus.uid) return <motion.div exit="undefined"> <Redirect to='/login' /> </motion.div>
             if(this.state.currentStage === 0) {
                 return (
                     <motion.div 

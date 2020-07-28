@@ -3,6 +3,36 @@ import { connect } from 'react-redux';
 import { signIn } from '../../Store/Actions/authActions'
 import { Redirect } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+// Motion variant.
+// Parent.
+const animateVariants = {
+    start: { 
+        opacity: 0,
+        x: 1000
+    },
+    finish: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            type: "spring",
+            mass: 0.4,
+            stiffness: 1000, 
+            damping: 100,
+            when: "beforeChildren",
+        }
+    },
+    exit: {
+        x: 1000,
+        opacity: 0,
+        transition: {
+            type: "spring",
+            stiffness: 1000, 
+            damping: 55
+        }
+    }
+}
 
 class SignIn extends Component {
 
@@ -26,10 +56,12 @@ class SignIn extends Component {
 
         if(authStatus.isLoaded) {
         // Route guarding
-        if(authStatus.uid) return <Redirect to='/' />
+        if(authStatus.uid) return <motion.div exit="undefined"> <Redirect to='/' /> </motion.div>
 
         return (
-            <div>
+            <motion.div
+                variants={animateVariants} initial="start" animate="finish" exit="exit"
+            >
                 <NavLink to='/'>
                     <div className="backButton btn-floating btn-large waves-effect hoverable waves-light deep-purple">
                         { /* eslint-disable-next-line */ }
@@ -70,7 +102,7 @@ class SignIn extends Component {
                         </form>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         )
         } else {
             return null;
