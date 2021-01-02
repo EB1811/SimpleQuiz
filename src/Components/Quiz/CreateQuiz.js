@@ -56,6 +56,7 @@ class CreateQuiz extends Component {
 
     state = {
         title: '',
+        category: '',
         questions: [],
         currentQuestion: '',
         currentAnswer: '',
@@ -106,6 +107,7 @@ class CreateQuiz extends Component {
         //console.log(this.state);
         const newQuiz = {
             title: this.state.title,
+            category: this.state.category,
             question: this.state.questions
         }
 
@@ -133,8 +135,7 @@ class CreateQuiz extends Component {
                             </div>
                         </NavLink>
                         <div className="valign-wrapper">
-                            <h1 className="title">Title</h1>
-
+                            <h1 className="title" style={{marginTop: "50px", marginBottom: 0}}>Title</h1>
                             <div className="container">
                                 <div>
                                 <div className="row">

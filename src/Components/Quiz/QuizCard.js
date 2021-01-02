@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 
+//TODO quiz.catagory output. 
+
 const QuizCard = ({quiz}) => {
     return (
         <div className="col s12 m4 l3">
