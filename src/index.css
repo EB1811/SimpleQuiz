@@ -186,7 +186,7 @@ code {
         font-size: 12.5px;
     }
     .collection {
-        max-height: 240px;
+        max-height: 500px;
     }
     .areaMargin {
         margin-top: 65px;
@@ -221,7 +221,7 @@ code {
         font-size: 14px;
     }
     .collection {
-        max-height: 170px;
+        max-height: 400px;
     }
     .colTitle {
         font-size: 17.5px;
@@ -281,7 +281,7 @@ code {
         font-size: 13px;
     }
     .collection {
-        max-height: 150px;
+        max-height: 300px;
     }
     .areaMargin {
         margin-top: 45px;
@@ -307,7 +307,7 @@ code {
         padding-bottom: 2px;
     }
     .card .card-title {
-        font-size: 27.5px;
+        font-size: 20px;
     }
 }
 @media only screen and (max-width: 600px) {

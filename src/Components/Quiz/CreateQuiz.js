@@ -179,7 +179,7 @@ class CreateQuiz extends Component {
                             <div className='container'>
                                 <div>
                                     <div className='row'>
-                                        <div className='col s6 offset-s3'>
+                                        <div className='col s12 m10 offset-m1 l8 offset-l2'>
                                             <div className='input-field'>
                                                 <input
                                                     required
@@ -251,7 +251,7 @@ class CreateQuiz extends Component {
                                     </div>
                                     <div className='row areaMargin'>
                                         <div className='row noBottomMargin'>
-                                            <div className='col s6 offset-s3'>
+                                            <div className='col s12 m6 offset-m3'>
                                                 <Question
                                                     questions={
                                                         this.state.questions
@@ -263,7 +263,7 @@ class CreateQuiz extends Component {
                                             </div>
                                         </div>
                                         <div className='row noBottomMargin'>
-                                            <div className='col s5 offset-s1'>
+                                            <div className='col s12 m5 offset-m1'>
                                                 <div className='input-field'>
                                                     <label htmlFor='question'>
                                                         Qustion
@@ -281,7 +281,7 @@ class CreateQuiz extends Component {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className='col s5'>
+                                            <div className='col s12 m5'>
                                                 <div className='input-field'>
                                                     <label htmlFor='answer'>
                                                         Answer
