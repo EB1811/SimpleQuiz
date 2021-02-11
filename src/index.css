@@ -1,363 +1,362 @@
 html {
-  height: 100%;
-  overflow-x: hidden;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 #root {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  margin: 0;
-  height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #1E2425;
+    margin: 0;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #1e2425;
 }
 
-input, select, textarea{
-  color: #ffffff;
+input,
+select,
+textarea {
+    color: #ffffff;
 }
 
 .container {
-  height: 100%;
+    height: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 
 .nav-wrapper {
-  background-color: #1b2021;
+    background-color: #1b2021;
 }
 
 .valign-wrapper {
-  min-height: calc(100vh - 64px);
+    min-height: calc(100vh - 64px);
 }
 
 .btn-large {
-  height: auto;
-  width: auto;
-  line-height: 35px;
-  padding: 25px;
-  font-size: 35px;
-  white-space: nowrap;
-  font-weight: bold;
-  color: #1E2425;
+    height: auto;
+    width: auto;
+    line-height: 35px;
+    padding: 25px;
+    font-size: 35px;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #1e2425;
 }
 .btn2 {
-  line-height: 20px;
-  padding: 10px;
-  font-size: 20px;
+    line-height: 20px;
+    padding: 10px;
+    font-size: 20px;
 }
 
 /* Smaller secondary title. */
 .secondHeader {
-  font-size: 16px;
-  font-weight: 500;
-  color: #1b2021;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1b2021;
 }
 
 .areaMargin {
-  margin-top: 75px;
-  margin-bottom: 165px;
+    margin-top: 75px;
+    margin-bottom: 165px;
 }
 .noBottomMargin {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .input-field {
-  margin-bottom: 5px;
-  margin-top: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 .signinSpace {
-  margin-bottom: 75px;
+    margin-bottom: 75px;
 }
 
 .createQuizTitle {
-  color: #673ab7;
-  font-weight: bold;
+    color: #673ab7;
+    font-weight: bold;
 }
 .collection {
-  overflow-x: hidden; 
-  overflow-y: auto; 
-  max-height: 300px;
-  border: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 300px;
+    border: none;
 }
 .colTitle {
-  font-weight: bold;
-  color: #1E2425;
+    font-weight: bold;
+    color: #1e2425;
 }
 .colText {
-  font-weight: bold;
-  color: #1E2425;
-  white-space: normal;
+    font-weight: bold;
+    color: #1e2425;
+    white-space: normal;
 }
 .collection.with-header {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .collection.with-header .collection-header {
-  border-bottom: 3px solid #1E2425;
-  padding-top: 5px;
-  padding-bottom: 5px;
+    border-bottom: 3px solid #1e2425;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .collection.with-header .collection-item {
-  position: relative;
-  border-bottom: 3px solid #1E2425;
-  padding-top: 5px;
-  padding-bottom: 5px;
+    position: relative;
+    border-bottom: 3px solid #1e2425;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .colDel {
-  position: absolute;
-  right: 1.5%;
-  top: 25%;
-  font-size: 25px;
-  cursor: pointer;
+    position: absolute;
+    right: 1.5%;
+    top: 25%;
+    font-size: 25px;
+    cursor: pointer;
 }
 
 .card .card-title {
-  font-size: 50px;
-  white-space: nowrap;
-  font-weight: bold;
-  color: #1E2425;
-  text-align: center;
+    font-size: 50px;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #1e2425;
+    text-align: center;
 }
 
 .core {
-  position: relative;
-	height: 100%;
+    position: relative;
+    height: 100%;
 }
 .backButton {
-  position: absolute;
-  margin-left: 25px;
-  margin-top: 25px;
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 25px;
 }
 
 .quizTitle {
-  color: #1E2425;
-  font-weight: bold;
-  white-space: nowrap;
-  font-size: 25px;
-  margin-bottom: 15px;
-  margin-top: 12px;
+    color: #1e2425;
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-top: 12px;
 }
 .infoText {
-  font-size: 13px;
-  font-style: italic;
-  white-space: nowrap;
+    font-size: 13px;
+    font-style: italic;
+    white-space: nowrap;
 }
 
 .title {
-  top: 35%;
-	transform: translateY(-65%);
-  height: auto;
-  width: 100%;
-  text-align: center;
-  position: absolute;
-  color: #673ab7;
-  font-weight: bold;
+    top: 35%;
+    transform: translateY(-65%);
+    height: auto;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    color: #673ab7;
+    font-weight: bold;
 }
 .quizTitleSize {
-  width: 80%;
-  left: 10%;
-  font-size: 50px;
-  white-space: normal;
+    width: 80%;
+    left: 10%;
+    font-size: 40px;
+    white-space: normal;
 }
 
 /* BREAKPOINTS DONT CHANGE */
 @media only screen and (max-width: 2120px) {
-  .title {
-    top: 32.5%;
-	  transform: translateY(-67.5%);
-  }
+    .title {
+        top: 32.5%;
+        transform: translateY(-67.5%);
+    }
 }
 @media only screen and (max-width: 1920px) {
-  .title {
-    top: 30%;
-	  transform: translateY(-70%);
-  }
-  .infoText {
-    font-size: 12.5px;
-  }
-  .collection {
-    max-height: 240px;
-  }
-  .areaMargin {
-    margin-top: 65px;
-    margin-bottom: 140px;
-  }
-  .quizTitleSize {
-    font-size: 45px;
-  }
+    .title {
+        top: 30%;
+        transform: translateY(-70%);
+    }
+    .infoText {
+        font-size: 12.5px;
+    }
+    .collection {
+        max-height: 240px;
+    }
+    .areaMargin {
+        margin-top: 65px;
+        margin-bottom: 140px;
+    }
 }
 @media only screen and (max-width: 1440px) {
-  .title {
-    top: 27.5%;
-	  transform: translateY(-72.5%);
-  }
-  .quizTitleSize {
-    font-size: 30px;
-  }
-  .btn-large {
-    line-height: 30px;
-    padding: 20px;
-    font-size: 30px;
-  }
-  .btn2 {
-    line-height: 20px;
-    padding: 10px;
-    font-size: 20px;
-  }
-  .quizTitle {
-    font-size: 17.5px;
-  }
-  .infoText {
-    font-size: 11px;
-  }
-  .secondHeader {
-    font-size: 14px;
-  }
-  .collection {
-    max-height: 170px;
-  }
-  .colTitle {
-    font-size: 17.5px;
-  }
-  .colText {
-    font-size: 12.5px;
-  }
-  .areaMargin {
-    margin-top: 55px;
-    margin-bottom: 115px;
-  }
-  .collection.with-header .collection-header {
-    padding-top: 2.5px;
-    padding-bottom: 2.5px;
-  }
-  .collection.with-header .collection-item {
-    padding-top: 2.5px;
-    padding-bottom: 2.5px;
-  }
-  .createQuizTitle {
-    font-size: 52.5px;
-  }
-  .colTitle {
-    font-size: 17.5px;
-  }
-  .card .card-title {
-    font-size: 35px;
-  }
+    .title {
+        top: 27.5%;
+        transform: translateY(-72.5%);
+    }
+    .quizTitleSize {
+        font-size: 30px;
+    }
+    .btn-large {
+        line-height: 30px;
+        padding: 20px;
+        font-size: 30px;
+    }
+    .btn2 {
+        line-height: 20px;
+        padding: 10px;
+        font-size: 20px;
+    }
+    .quizTitle {
+        font-size: 17.5px;
+    }
+    .infoText {
+        font-size: 11px;
+    }
+    .secondHeader {
+        font-size: 14px;
+    }
+    .collection {
+        max-height: 170px;
+    }
+    .colTitle {
+        font-size: 17.5px;
+    }
+    .colText {
+        font-size: 12.5px;
+    }
+    .areaMargin {
+        margin-top: 55px;
+        margin-bottom: 115px;
+    }
+    .collection.with-header .collection-header {
+        padding-top: 2.5px;
+        padding-bottom: 2.5px;
+    }
+    .collection.with-header .collection-item {
+        padding-top: 2.5px;
+        padding-bottom: 2.5px;
+    }
+    .createQuizTitle {
+        font-size: 52.5px;
+    }
+    .colTitle {
+        font-size: 17.5px;
+    }
+    .card .card-title {
+        font-size: 35px;
+    }
 }
 @media only screen and (max-width: 750px) {
-  .title {
-    top: 25%;
-	  transform: translateY(-75%);
-  }
-  .quizTitleSize {
-    top: 30%;
-	  transform: translateY(-70%);
-    font-size: 25px;
-  }
-  .btn-large {
-    line-height: 30px;
-    padding: 20px;
-    font-size: 30px;
-  }
-  .btn2 {
-    line-height: 20px;
-    padding: 10px;
-    font-size: 20px;
-  }
-  .quizTitle {
-    font-size: 15px;
-  }
-  .infoText {
-    font-size: 10px;
-  }
-  .secondHeader {
-    font-size: 13px;;
-  }
-  .collection {
-    max-height: 150px;
-  }
-  .areaMargin {
-    margin-top: 45px;
-    margin-bottom: 85px;
-  }
-  .createQuizTitle {
-    font-size: 45px;
-  }
-  .colTitle {
-    font-size: 17.5px;
-  }
-  .colText {
-    font-size: 12.5px;
-  }
-  .collection.with-header .collection-header {
-    border-bottom: 2px solid #1E2425;
-    padding-top: 0.5px;
-    padding-bottom: 0px;
-  }
-  .collection.with-header .collection-item {
-    border-bottom: 2px solid #1E2425;
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-  .card .card-title {
-    font-size: 27.5px;
-  }
+    .title {
+        top: 25%;
+        transform: translateY(-75%);
+    }
+    .quizTitleSize {
+        top: 30%;
+        transform: translateY(-70%);
+        font-size: 25px;
+    }
+    .btn-large {
+        line-height: 30px;
+        padding: 20px;
+        font-size: 30px;
+    }
+    .btn2 {
+        line-height: 20px;
+        padding: 10px;
+        font-size: 20px;
+    }
+    .quizTitle {
+        font-size: 15px;
+    }
+    .infoText {
+        font-size: 10px;
+    }
+    .secondHeader {
+        font-size: 13px;
+    }
+    .collection {
+        max-height: 150px;
+    }
+    .areaMargin {
+        margin-top: 45px;
+        margin-bottom: 85px;
+    }
+    .createQuizTitle {
+        font-size: 45px;
+    }
+    .colTitle {
+        font-size: 17.5px;
+    }
+    .colText {
+        font-size: 12.5px;
+    }
+    .collection.with-header .collection-header {
+        border-bottom: 2px solid #1e2425;
+        padding-top: 0.5px;
+        padding-bottom: 0px;
+    }
+    .collection.with-header .collection-item {
+        border-bottom: 2px solid #1e2425;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    .card .card-title {
+        font-size: 27.5px;
+    }
 }
 @media only screen and (max-width: 600px) {
-  .title {
-    top: 25%;
-	  transform: translateY(-75%);
-  }
-  .quizTitleSize {
-    top: 30%;
-	  transform: translateY(-70%);
-    font-size: 20px;
-  }
-  .btn-large {
-    line-height: 22.5px;
-    padding: 15px;
-    font-size: 22.5px;
-  }
-  .btn2 {
-    line-height: 17.5px;
-    padding: 7.5px;
-    font-size: 17.5px;
-  }
-  .backButton {
-    margin-left: 5px;
-    margin-top: 5px;
-  }
-  .quizTitle {
-    font-size: 25px;
-  }
-  .infoText {
-    font-size: 12.5px;
-  }
-  .secondHeader {
-    font-size: 16px;
-  }
-  
-  .card .card-title {
-    font-size: 22.5px;
-  }
+    .title {
+        top: 25%;
+        transform: translateY(-75%);
+    }
+    .quizTitleSize {
+        top: 30%;
+        transform: translateY(-70%);
+        font-size: 20px;
+    }
+    .btn-large {
+        line-height: 22.5px;
+        padding: 15px;
+        font-size: 22.5px;
+    }
+    .btn2 {
+        line-height: 17.5px;
+        padding: 7.5px;
+        font-size: 17.5px;
+    }
+    .backButton {
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+    .quizTitle {
+        font-size: 25px;
+    }
+    .infoText {
+        font-size: 12.5px;
+    }
+    .secondHeader {
+        font-size: 16px;
+    }
+
+    .card .card-title {
+        font-size: 22.5px;
+    }
 }
 
 .input-field label {
-  color: #673ab7;
-  font-weight: bold;
+    color: #673ab7;
+    font-weight: bold;
 }
-input[type=text]:not(.browser-default):focus:not([readonly]),
-input[type=email]:not(.browser-default):focus:not([readonly]),
-input[type=password]:not(.browser-default):focus:not([readonly]),
-textarea.materialize-textarea:focus:not([readonly]){
-  border-color: #673ab7;
-  box-shadow: none;
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+input[type="email"]:not(.browser-default):focus:not([readonly]),
+input[type="password"]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-color: #673ab7;
+    box-shadow: none;
 }
