@@ -1,35 +1,37 @@
-import React from 'react';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import React, { Suspense, lazy } from "react";
+import { Switch, Route, useLocation } from "react-router-dom";
 
 // Framer Motion
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from "framer-motion";
 
 // Components imports
-import Dashboard from './Components/Dashboard/Dashboard';
-import QuizPage from './Components/Quiz/QuizPage';
-import SignIn from './Components/Auth/SignIn';
-import SignUp from './Components/Auth/SignUp';
-import CreateQuiz from './Components/Quiz/CreateQuiz';
-import Base from './Components/base/Base';
+const Dashboard = lazy(() => import("./Components/Dashboard/Dashboard"));
+const QuizPage = lazy(() => import("./Components/Quiz/QuizPage"));
+const SignIn = lazy(() => import("./Components/Auth/SignIn"));
+const SignUp = lazy(() => import("./Components/Auth/SignUp"));
+const CreateQuiz = lazy(() => import("./Components/Quiz/CreateQuiz"));
+const Base = lazy(() => import("./Components/base/Base"));
 
 function App() {
-  // Contains info about route.
-  const location = useLocation();
+    // Contains info about route.
+    const location = useLocation();
 
-  return (
-    <div className="App" style={{height:"100%"}}>
-      <AnimatePresence exitBeforeEnter>
-        <Switch location={location} key={location.pathname}>
-          <Route exact path='/' component={Base}/>
-          <Route exact path='/Dashboard' component={Dashboard}/>
-          <Route path='/login' component={SignIn}/>
-          <Route path='/signUp' component={SignUp}/>
-          <Route path='/createquiz' component={CreateQuiz}/>
-          <Route path='/quiz/:id' component={QuizPage}/>
-        </Switch>
-      </AnimatePresence>
-    </div>
-  );
+    return (
+        <div className='App' style={{ height: "100%" }}>
+            <AnimatePresence exitBeforeEnter>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Switch location={location} key={location.pathname}>
+                        <Route exact path='/' component={Base} />
+                        <Route exact path='/Dashboard' component={Dashboard} />
+                        <Route path='/login' component={SignIn} />
+                        <Route path='/signUp' component={SignUp} />
+                        <Route path='/createquiz' component={CreateQuiz} />
+                        <Route path='/quiz/:id' component={QuizPage} />
+                    </Switch>
+                </Suspense>
+            </AnimatePresence>
+        </div>
+    );
 }
 
 export default App;
